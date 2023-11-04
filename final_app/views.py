@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
-def index(request):
+def homepage(request):
 
 # Render the HTML template index.html with the data in the context variable.
-   return HttpResponse('home page')
+   return render( request, 'final_app/homepage.html' )
