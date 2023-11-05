@@ -3,8 +3,29 @@
 
 <!-- Replace block content in base_template.html -->
 {% block content %}
-<h1>Computer Science Portfolios</h1>
+{% load static %}
 
-<h2>More to come</h2>
+<div class="container">
+    <div class="col-md-16 px-0">
+        <img src="{% static 'images/super_sports_cars-HD.jpg' %}" class="img-fluid">
+    </div>
+</div>
+<h2>Cars on Garage Takes</h2>
+<br>
+<h5>Most Recently Added Cars</h5>
+<ul class="list-group">
+{% for car in homepage_cars %}
+<li class="list-group-item">Owner: {{ car.owner }} 
+<p><br>Make: {{ car.make }} <br>
+Model: {{ car.model }}</p>
+<a class="btn btn-primary" href="{{ car.get_absolute_url }}" role="button">Visit Car</a>
+</li>
+{% endfor %}
+</ul>
+
+<br>
+<a class="btn btn-primary" href="{% url 'cars' %}" role="button">See All Cars</a>
+<a class="btn btn-primary" href="{% url 'create_car' %}" role="button">Create New Car</a>
+
 
 {% endblock %}

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'final_app',
+    'bootstrap5',
 ]
 
 # Add support for authenticating users

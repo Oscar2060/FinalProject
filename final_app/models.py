@@ -5,6 +5,7 @@ from django.urls import reverse
 
 class Car(models.Model):
 
+    owner = models.CharField(max_length=200)
     make = models.CharField(max_length=200)
     model = models.CharField(max_length=200)
     year = models.CharField(max_length=200)
