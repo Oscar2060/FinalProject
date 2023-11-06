@@ -7,9 +7,9 @@
 <form action="" method="POST">
 
 {% csrf_token %}
-<p><strong>Are you sure you want to delete the {{ car.year }} {{car.make}} {{car.model}}?</p>
-<button onclick="window.history.back();" class="btn btn-default" type="button">Cancel</button>
-<input class="btn btn-primary" type="submit" value="Confirm"/>
+<p style="color: #ffffff"><strong>Are you sure you want to delete the {{ car.year }} {{car.make}} {{car.model}}?</p>
+<button onclick="window.history.back();" class="btn btn-default" style="color: #ffffff" type="button">Cancel</button>
+<input class="btn" style="background-color: #C6A67E" type="submit" value="Confirm"/>
 
 </form>
 

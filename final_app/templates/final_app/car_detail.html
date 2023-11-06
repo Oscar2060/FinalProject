@@ -1,14 +1,14 @@
 {% extends 'final_app/base_template.html' %}
 
 {% block content %}
-<h3>Car Owner: {{ car.owner }}</h3>
+<h3 style="color: #ffffff">Car Owner: {{ car.owner }}</h3>
 
-<p><strong>Make:</strong> {{ car.make }}</p>
-<p><strong>Model:</strong> {{ car.model }}</p>
-<p><strong>Year:</strong> {{ car.year }}</p>
-<p><strong>Color:</strong> {{ car.color }}</p>
+<p style="color: #ffffff"><strong>Make:</strong> {{ car.make }}</p>
+<p style="color: #ffffff"><strong>Model:</strong> {{ car.model }}</p>
+<p style="color: #ffffff"><strong>Year:</strong> {{ car.year }}</p>
+<p style="color: #ffffff"><strong>Color:</strong> {{ car.color }}</p>
 
-<a class="btn btn-primary" href="{% url 'edit_car' car.id %}" role="button">Edit Car</a>
-<a class="btn btn-primary" href="{% url 'delete_car' car.id %}" role="button">Delete Car</a>
+<a class="btn" style="background-color: #C6A67E" href="{% url 'edit_car' car.id %}" role="button">Edit Car</a>
+<a class="btn" style="background-color: #C6A67E" href="{% url 'delete_car' car.id %}" role="button">Delete Car</a>
 
 {% endblock %}

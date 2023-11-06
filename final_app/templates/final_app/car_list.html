@@ -1,12 +1,12 @@
 {% extends 'final_app/base_template.html' %}
 
 {% block content %}
-<h1>Car List</h1>
+<h1 style="color: #ffffff">Car List</h1>
 {% if car_list %}
 <ul>
 {% for car in car_list %}
-<li>
-<a href="{{ car.get_absolute_url }}">{{ car.make }}</a>
+<li style="color: #C6A67E">
+<a style="color: #C6A67E" href="{{ car.get_absolute_url }}">{{ car.make }}</a>
 </li>
 {% endfor %}
 </ul>
