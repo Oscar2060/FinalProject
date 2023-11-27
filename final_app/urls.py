@@ -18,4 +18,6 @@ path('accounts/create_profile/', views.createProfile, name='create_profile'),
 path('account_profile/<int:pk>', views.AccountDetailView.as_view(), name='account-profile'),
 path('account_profile/<int:pk>/edit_profile', views.editAccount, name= 'edit_account'),
 path('account_profile/<int:pk>/delete_profile', views.deleteAccount, name= 'delete_account'),
+path('posts/', views.PostListView.as_view(), name= 'posts'),
+path('posts/<int:pk>', views.PostDetailView.as_view(), name= 'post-detail'),
 ]

@@ -2,7 +2,7 @@ from typing import Any
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
-from final_app.models import Car, Account
+from final_app.models import Car, Account, Post
 from .forms import CarForm, CreateUserForm, UserProfileForm
 from django.contrib.auth.models import User, Group
 from django.contrib import messages
@@ -104,3 +104,8 @@ class AccountDetailView(LoginRequiredMixin, generic.DetailView):
       context = super().get_context_data(**kwargs)
       context['account_cars'] = Car.objects.filter(owner_id=self.kwargs['pk'])
       return context
+   
+class PostListView(generic.ListView):
+   model = Post
+class PostDetailView(LoginRequiredMixin, generic.DetailView):
+   model = Post

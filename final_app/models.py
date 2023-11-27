@@ -36,3 +36,10 @@ class Car(models.Model):
     def get_absolute_url(self):
         return reverse('car-detail', args=[str(self.id)])
     
+class Post(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE, unique=True)
+    picture = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
+    caption = models.TextField(max_length=200, default='')
+    # likes = (use if have time if not then focus on other things)
+
+    # use max's as a base and go from there

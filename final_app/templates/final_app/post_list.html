@@ -1,0 +1,26 @@
+<!-- inherit from base.html-->
+{% extends "final_app/base_template.html" %}
+
+<!-- Replace block content in base_template.html -->
+{% block content %}
+{% load static %}
+
+<h1 style="color: #ffffff">Feed</h1>
+{% if post_list %}
+<ul>
+{% for post in post_list %}
+<li style="color: #C6A67E">
+
+
+    
+<!-- replace post caption with post picture and caption below it, make image clickable -->
+
+<a style="color: #C6A67E" href="{{ post.get_absolute_url }}">{{ post.caption }}</a>
+</li>
+{% endfor %}
+</ul>
+{% else %}
+<p style="color: #C6A67E">No posts yet.</p>
+{% endif %}
+
+{% endblock %}
