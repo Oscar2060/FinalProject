@@ -1,0 +1,18 @@
+<!-- inherit from base.html -->
+{% extends 'final_app/base_template.html' %}
+
+<!-- Replace block content in base_template.html -->
+{% block content %}
+
+<h1 style="color: #ffffff">Create Profile</h1>
+
+<form action="" method="POST">
+
+{% csrf_token %}
+<table style="color: #ffffff">
+{{ form.as_table }}
+</table>
+<input type="submit" name="Submit">
+</form>
+
+{% endblock %}

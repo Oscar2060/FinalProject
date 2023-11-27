@@ -1,0 +1,12 @@
+{% extends 'final_app/base_template.html' %}
+
+{% block content %}
+  <h2 style="color: #ffffff">Garage Takes Registration</h2>
+
+  <form style="color: #ffffff" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" name="Create User" />
+  </form>
+  {{form.errors}}
+{% endblock %}

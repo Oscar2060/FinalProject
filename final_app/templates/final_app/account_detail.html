@@ -1,0 +1,26 @@
+{% extends 'final_app/base_template.html' %}
+
+{% block content %}
+
+<h3 style="color: #ffffff">{{ account.name }}</h3>
+<br>
+<p style="color: #ffffff">City: {{ account.city }}</p>
+<p style="color: #ffffff">{{ account.name }}'s Bio: {{ account.bio }}</p>
+
+<h3 style="color: #ffffff">{{ account.name}}'s Cars</h3>
+{% if account_cars %}
+<ul>
+{% for car in account_cars %}
+<li style="color: #C6A67E">
+<a style="color: #C6A67E" href="{{ car.get_absolute_url }}">{{ car.make }}</a>
+</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>There are no cars saved to this account.</p>
+{% endif %}
+
+<a class="btn" style="background-color: #C6A67E" href="{% url 'edit_account' account.id %}" role="button">Edit Account</a>
+<a class="btn" style="background-color: #C6A67E" href="{% url 'logout' %}" role="button">Logout</a>
+
+{% endblock %}
