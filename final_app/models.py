@@ -28,7 +28,7 @@ class Car(models.Model):
     # performance = models.TextField(max_length=200)
 
     # optional image
-    # picture = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
+    picture = models.ImageField(upload_to='uploads/', blank=True)
 
     def __str__(self):
         return self.make + ' ' + self.model
@@ -37,9 +37,14 @@ class Car(models.Model):
         return reverse('car-detail', args=[str(self.id)])
     
 class Post(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE, unique=True)
-    picture = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    picture = models.ImageField(upload_to='uploads/')
     caption = models.TextField(max_length=200, default='')
     # likes = (use if have time if not then focus on other things)
 
-    # use max's as a base and go from there
+    def __str__(self):
+        return self.caption
+    
+    def get_absolute_url(self):
+        return reverse('post-detail', args=[str(self.id)])
+    

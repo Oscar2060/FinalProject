@@ -1,10 +1,17 @@
-<!-- inherit from base.html-->
-{% extends "final_app/base_template.html" %}
+{% extends 'final_app/base_template.html' %}
 
-<!-- Replace block content in base_template.html -->
 {% block content %}
-{% load static %}
 
-<!-- show only the one post, caption, and likes on post -->
+<br>
+<img src="{{ post.picture.url }}" style="max-width: 100%; height: auto" class="img-fluid">
+<br><br>
+<h4 style="color: #ffffff">Post Caption: {{ post.caption }}</h4>
+<h5 style="color: #ffffff">Posted by - {{ post.user.get_username }}</h5>
+<br>
+
+{% if post.user.get_username == user.get_username %}:
+    <a class="btn" style="background-color: #C6A67E" href="{% url 'delete_post' post.id %}" role="button">Delete Post</a>
+{% endif %}
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 {% endblock %}

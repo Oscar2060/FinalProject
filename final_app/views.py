@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from final_app.models import Car, Account, Post
-from .forms import CarForm, CreateUserForm, UserProfileForm
+from .forms import CarForm, CreateUserForm, UserProfileForm, PostForm
 from django.contrib.auth.models import User, Group
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -23,17 +23,19 @@ def homepage(request):
 @login_required(login_url='login')
 def createCar(request):
 
-   form = CarForm(request.POST or None)
-   if form.is_valid():
-      form.save()
-      return redirect('home_page')
+   form = CarForm()
+   if request.method == 'POST':
+      form = CarForm(request.POST, request.FILES)
+      if form.is_valid():
+         form.save()
+         return redirect('home_page')
    return render(request, 'final_app/car_form.html', {'form':form})
 
 @login_required(login_url='login')
 def editCar(request, pk):
 
    car = get_object_or_404(Car, pk=pk)
-   form = CarForm(request.POST or None, instance = car)
+   form = CarForm(request.POST, request.FILES, instance = car)
    if form.is_valid():
       form.save()
       return redirect('car-detail', pk)
@@ -93,7 +95,27 @@ def deleteAccount(request, pk) :
       return redirect('home_page')
    return render(request, 'final_app/delete_car.html', {'account':account})
 
-class CarListView(generic.ListView):
+@login_required(login_url='login')
+def createPost(request):
+   
+   form = PostForm()
+   if request.method == 'POST':
+      form = PostForm(request.POST, request.FILES)
+      if form.is_valid():
+         form.save()
+         return redirect('posts')
+   return render(request, 'final_app/post_form.html', {'form':form})
+
+@login_required(login_url='login')
+def deletePost(request, pk):
+   
+   post = get_object_or_404(Post, pk=pk)
+   if request.method == 'POST':
+      post.delete()
+      return redirect('posts')
+   return render(request, 'final_app/delete_post.html', {'post':post})
+
+class CarListView(LoginRequiredMixin,generic.ListView):
    model = Car
 class CarDetailView(LoginRequiredMixin, generic.DetailView):
    model = Car
@@ -105,7 +127,7 @@ class AccountDetailView(LoginRequiredMixin, generic.DetailView):
       context['account_cars'] = Car.objects.filter(owner_id=self.kwargs['pk'])
       return context
    
-class PostListView(generic.ListView):
+class PostListView(LoginRequiredMixin,generic.ListView):
    model = Post
 class PostDetailView(LoginRequiredMixin, generic.DetailView):
    model = Post

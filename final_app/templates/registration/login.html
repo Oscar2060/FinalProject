@@ -34,12 +34,13 @@
       </tr>
     </table>
     <input type="submit" value="Login">
-    <input type="hidden" name="next" value="{{ next }}">
+    <input type="hidden" name="next" value="{% url 'home_page' %}">
   </form>
 
   {# Assumes you setup the password_reset view in your URLconf #}
   <p><a href="{% url 'password_reset' %}"><strong>Lost password?</strong></a></p>
 
-
+  <br>
+  <a class="btn" style="background-color: #C6A67E" href="{% url 'register_page' %}" role="button">Don't Have an Account? Register Now!</a>
 
 {% endblock %}

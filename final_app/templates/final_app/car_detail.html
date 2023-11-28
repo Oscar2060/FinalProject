@@ -1,14 +1,22 @@
 {% extends 'final_app/base_template.html' %}
 
 {% block content %}
+<br>
 <h3 style="color: #ffffff">Car Owner: {{ car.owner }}</h3>
 
-<p style="color: #ffffff"><strong>Make:</strong> {{ car.make }}</p>
-<p style="color: #ffffff"><strong>Model:</strong> {{ car.model }}</p>
-<p style="color: #ffffff"><strong>Year:</strong> {{ car.year }}</p>
-<p style="color: #ffffff"><strong>Color:</strong> {{ car.color }}</p>
+<p style="color: #ffffff"><strong>Make:</strong> {{ car.make }}
+<strong>Model:</strong> {{ car.model }}<br>
+<strong>Year:</strong> {{ car.year }}
+<strong>Color:</strong> {{ car.color }}</p>
+
+{% if car.picture %}:
+    <img src="{{ car.picture.url }}" style="max-width: 100%; height: auto" class="img-fluid">
+{% endif %}
+
+<br><br>
 
 <a class="btn" style="background-color: #C6A67E" href="{% url 'edit_car' car.id %}" role="button">Edit Car</a>
 <a class="btn" style="background-color: #C6A67E" href="{% url 'delete_car' car.id %}" role="button">Delete Car</a>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 {% endblock %}

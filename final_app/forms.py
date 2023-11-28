@@ -1,12 +1,12 @@
 from django.forms import ModelForm
-from .models import Car, Account
+from .models import Car, Account, Post
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class CarForm(ModelForm):
     class Meta:
         model = Car
-        fields = ('owner', 'make', 'model', 'year', 'color')
+        fields = ('owner', 'make', 'model', 'year', 'color', 'picture')
 
 class CreateUserForm(UserCreationForm):
     class Meta:
@@ -17,3 +17,8 @@ class UserProfileForm(ModelForm):
     class Meta:
         model = Account
         fields = '__all__'
+
+class PostForm(ModelForm):
+    class Meta:
+        model = Post
+        fields = ['user', 'picture', 'caption']

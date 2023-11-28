@@ -1,4 +1,6 @@
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
@@ -20,4 +22,7 @@ path('account_profile/<int:pk>/edit_profile', views.editAccount, name= 'edit_acc
 path('account_profile/<int:pk>/delete_profile', views.deleteAccount, name= 'delete_account'),
 path('posts/', views.PostListView.as_view(), name= 'posts'),
 path('posts/<int:pk>', views.PostDetailView.as_view(), name= 'post-detail'),
+path('create_post', views.createPost, name= 'create_post'),
+path('post/<int:pk>/delete_post', views.deletePost, name= 'delete_post'),
 ]
+

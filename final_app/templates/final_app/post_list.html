@@ -5,20 +5,24 @@
 {% block content %}
 {% load static %}
 
-<h1 style="color: #ffffff">Feed</h1>
+<h1 style="color: #ffffff; margin-left: 3%;">Car Feed</h1>
+<a class="btn" style="background-color: #C6A67E; margin-left: 3%;" href="{% url 'create_post' %}" role="button">Add Post</a>
+<br><br>
 {% if post_list %}
 <ul>
 {% for post in post_list %}
-<li style="color: #C6A67E">
-
-
-    
-<!-- replace post caption with post picture and caption below it, make image clickable -->
-
-<a style="color: #C6A67E" href="{{ post.get_absolute_url }}">{{ post.caption }}</a>
-</li>
+<div class="container" style="margin-left: 0%;">
+    <li style="color: #C6A67E">
+    <h5>{{ post.user.get_username }} - {{ post.caption }}</h5>
+    <a href="{% url 'post-detail' post.id %}">
+    <img src="{{ post.picture.url }}" style="max-width: 100%; height: auto" class="img-fluid">
+    </a>
+    </li>
+</div>
+<br>
 {% endfor %}
 </ul>
+<br><br><br><br><br><br><br>
 {% else %}
 <p style="color: #C6A67E">No posts yet.</p>
 {% endif %}
